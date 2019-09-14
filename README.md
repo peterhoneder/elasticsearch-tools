@@ -7,10 +7,17 @@ It was created because some of the existing import/export tools ran too slow on 
 the new bulk API seemed to speed things up dramatically. The other tools I used also weren't
 exporting \_parent and \_routing fields.
 
+## Changes of this fork
+
+This fork fixes:
+
+- support for ES 7 which reports total hit counts differently (Error: total required)
+- npm audit warnings at time of last commit
+
 ## Installation
 
 ```bash
-npm install -g elasticsearch-tools
+npm install https://github.com/peterhoneder/elasticsearch-tools
 ```
 
 After installing, you will have access to the following command line tools:
@@ -21,6 +28,14 @@ After installing, you will have access to the following command line tools:
 - [es-export-mappings](#usage-es-export-mappings)
 - [es-export-settings](#usage-es-export-settings)
 - [es-export-aliases](#usage-es-export-aliases)
+
+##### Performance
+
+For exports that don't need specific sort orders, please include this for maximum performance:
+
+```bash
+--sort _doc:asc
+```
 
 #### Importing
 
